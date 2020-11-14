@@ -1,0 +1,8 @@
+name: Nether Keep Inv
+version: ${project.version}
+main: com.github.flrque.netherkeepinv.NetherKeepInv
+api-version: 1.16
+prefix: KeepInvEN
+authors: [ FlrQue ]
+description: Keeps your inventory after death in Nether or The End dimensions
+website: www.flrque.win

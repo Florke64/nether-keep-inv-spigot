@@ -1,16 +1,19 @@
 package com.github.flrque.netherkeepinv;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+import sun.security.util.ArrayUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
-public final class Main extends JavaPlugin implements Listener {
+public final class NetherKeepInv extends JavaPlugin implements Listener {
 
     private final List<String> activeWorldNames = new ArrayList<>();
 
@@ -22,6 +25,9 @@ public final class Main extends JavaPlugin implements Listener {
 
         // Loading configured worlds into the memory
         activeWorldNames.addAll(getConfig().getStringList("active-worlds"));
+
+        final String activeWorldsLine = ArrayUtils.toString(activeWorldNames.toArray());
+        getLogger().log(Level.INFO, "Active worlds: " + activeWorldsLine);
 
         // Registering Event Listener (this class) - it listens for PlayerDeathEvent
         Bukkit.getPluginManager().registerEvents(this, this);

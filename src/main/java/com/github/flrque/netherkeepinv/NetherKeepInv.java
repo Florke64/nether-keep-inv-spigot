@@ -5,11 +5,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public final class NetherKeepInv extends JavaPlugin implements Listener {
+public final class Main extends JavaPlugin implements Listener {
 
     private final List<String> activeWorldNames = new ArrayList<>();
 
@@ -17,6 +18,7 @@ public final class NetherKeepInv extends JavaPlugin implements Listener {
     public void onEnable() {
         // Saving default config from resources
         saveDefaultConfig();
+        reloadConfig();
 
         // Loading configured worlds into the memory
         activeWorldNames.addAll(getConfig().getStringList("active-worlds"));
@@ -30,7 +32,7 @@ public final class NetherKeepInv extends JavaPlugin implements Listener {
     }
 
     @EventHandler
-    public void onPlayerDeath(final PlayerDeathEvent event) {
+    public void onPlayerDeath(@NotNull final PlayerDeathEvent event) {
         final String worldName = event.getEntity().getWorld().getName();
 
         // Return if place of death don't match the rules from config.yml

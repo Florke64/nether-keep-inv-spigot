@@ -1,4 +1,4 @@
-name: Nether Keep Inv
+name: NetherKeepInv
 version: ${project.version}
 main: com.github.flrque.netherkeepinv.NetherKeepInv
 api-version: 1.16
